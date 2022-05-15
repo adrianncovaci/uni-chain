@@ -1,0 +1,9 @@
+[workspace]
+members = [
+    'node',
+    'pallets/course_passing',
+    'pallets/proof_of_existence',
+    'runtime',
+]
+[profile.release]
+panic = "unwind"
