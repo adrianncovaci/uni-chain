@@ -3,7 +3,6 @@ import {
   Button,
   Card,
   Grid,
-  Message,
   Modal,
   Form,
   Label,
@@ -16,7 +15,6 @@ import { TxButton } from './substrate-lib/components'
 // --- Transfer Modal ---
 
 const TransferModal = props => {
-    console.log("derpina");
   const { course, setStatus } = props
   const [open, setOpen] = React.useState(false)
   const [formValue, setFormValue] = React.useState({})
@@ -192,7 +190,7 @@ const BuyCourse = props => {
 
 const CourseCard = props => {
   const { course, setStatus } = props
-  const { dna = null, owner = null, course_year = null, price = null, credits = null } = course
+  const { dna = null, owner = null, course_year = null, price = null } = course
   const displayDna = dna && dna.toJSON()
   const { currentAccount } = useSubstrateState()
   const isSelf = currentAccount.address === course.owner
@@ -212,7 +210,6 @@ const CourseCard = props => {
         <Card.Description>
           <p style={{ overflowWrap: 'break-word' }}>Course Year: {course_year}</p>
           <p style={{ overflowWrap: 'break-word' }}>Owner: {owner}</p>
-          <p style={{ overflowWrap: 'break-word' }}>Credits: {credits}</p>
           <p style={{ overflowWrap: 'break-word' }}>
             Price: {price || 'Not For Sale'}
           </p>
@@ -239,14 +236,7 @@ const CourseCards = props => {
 
   if (courses.length === 0) {
     return (
-      <Message info>
-        <Message.Header>
-          No Course found here... Create one now!&nbsp;
-          <span role="img" aria-label="point-down">
-            👇
-          </span>
-        </Message.Header>
-      </Message>
+        <p>Mint courses</p>
     )
   }
 
